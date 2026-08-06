@@ -520,12 +520,12 @@
 
     <div class="esgotado-box" id="esgotadoBox" style="display:none;">
       <div class="big">Vagas esgotadas</div>
-      <p>As 25 vagas do X1 do Flama já foram preenchidas. Fica ligado no grupo pra próxima chave.</p>
+      <p>As 25 vagas do X1 do Flama já foram preenchidas.</p>
     </div>
   </div>
 
   <footer>
-    X1 do Flama · 08/08/26 · Arena SportsPOA
+    X1 do Flama · Marcelino
     <br>
     <button class="admin-link" id="openAdmin" style="margin-top:6px;">área do organizador</button>
   </footer>
@@ -535,7 +535,7 @@
   <div class="modal">
     <button class="modal-close" id="closeModal">×</button>
     <div id="loginView">
-      <h2>Área do organizador</h2>
+      <h2>Admin</h2>
       <input type="password" id="adminPassword" placeholder="Senha">
       <div class="error-msg" id="adminError">Senha incorreta.</div>
       <button class="admin-btn-primary" id="loginBtn">Entrar</button>
@@ -551,10 +551,7 @@
   </div>
 </div>
 
-<!-- ============================================================
-     CONFIGURAÇÃO DO FIREBASE — preencha com os dados do SEU projeto
-     (Console Firebase > Configurações do projeto > Seus apps > SDK setup)
-     ============================================================ -->
+
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -563,7 +560,7 @@
   const MAX_VAGAS = 25;
   const ADMIN_PASSWORD = 'flama2026';
 
-  // >>> TROQUE pelos dados do seu projeto Firebase <<<
+  
  const firebaseConfig = {
   apiKey: "AIzaSyDT4lnd_pxUHtoNwLG97tuNaQi1Xb68JHQ",
   authDomain: "x1-do-flama.firebaseapp.com",
@@ -606,7 +603,7 @@
     }
   }
 
-  // Escuta o contador em tempo real — atualiza pra todo mundo que tiver a página aberta
+  
   counterRef.onSnapshot(function(snap){
     const n = (snap.exists && snap.data().count) ? snap.data().count : 0;
     renderCount(n);
@@ -672,7 +669,7 @@
       entryForm.reset();
       whatsappInput.disabled = false;
       marcelinoNote.classList.remove('show');
-      submitBtn.textContent = 'Vaga garantida ✓';
+      submitBtn.textContent = 'Vaga garantida ✓, iremos ter add no grupo para mais informções';
       setTimeout(function(){
         stamp.classList.remove('show');
         submitBtn.textContent = 'Garantir minha vaga';
@@ -691,7 +688,7 @@
     }
   });
 
-  // QR code pointing to this page
+  // QR code 
   try{
     new QRCode(document.getElementById('qrcode'), {
       text: window.location.href,
@@ -703,7 +700,7 @@
     });
   }catch(e){}
 
-  // ADMIN PANEL
+  
   const openAdmin = document.getElementById('openAdmin');
   const modalOverlay = document.getElementById('modalOverlay');
   const closeModal = document.getElementById('closeModal');
